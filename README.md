@@ -1,6 +1,6 @@
 # Scanimation
 
-Scanimation is an optical illusion technique where multiple images are interlaced into a single print and a striped barrier (with opening slits) is placed on top. When the barrier is moved across the interlaced image, the slits reveal one frame at a time, creating the illusion of motion.  
+Scanimation is an optical illusion technique where multiple images are interlaced into a single print and a striped barrier is placed on top. When the barrier is moved across the interlaced image, the slits reveal one frame at a time, creating the illusion of motion.  
 
 <p align="center">
   <img src="docs/interlaced.png" alt="Interlaced image" width="300"/>
@@ -31,7 +31,8 @@ pip install -r requirements.txt
 
 ## Quick Start: Scanimate
 
-Set parameters and provide video/image paths to obtain the scanimation barrier, interlaced image, and preview the animation:
+Input: image directory path and specify parameters 
+Output: scanimation barrier, interlaced image, animation preview
 
 ```python
 from scanimation.utils import count_images, calculate_ideal_fit, measurements_to_px
