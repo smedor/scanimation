@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "scanimation"
+version = "0.1.0"
+description = "Utilities to generate scanimation barriers, interlace frames, preview, and print templates."
+readme = "README.md"
+license = {text = "MIT"}
+authors = [{ name = "Your Name" }]
+requires-python = ">=3.10"
+dependencies = [
+  "numpy",
+  "opencv-python",
+  "pillow",
+  "imageio",
+  "ultralytics",   # optional but used by identify_objects
+]
+
+[project.urls]
+Homepage = "https://github.com/<you>/scanimation"
