@@ -1,17 +1,14 @@
 # Scanimation
 
-Scanimation is an optical illusion technique where multiple images are interlaced into a single print and a striped barrier (with opening slits) is placed on top.  
-When the barrier is moved across the interlaced image, the slits reveal one frame at a time, creating the illusion of motion.  
+Scanimation is an optical illusion technique where multiple images are interlaced into a single print and a striped barrier (with opening slits) is placed on top. When the barrier is moved across the interlaced image, the slits reveal one frame at a time, creating the illusion of motion.  
 
 <p align="center">
-  <img src="docs/interlaced.png" alt="Interlaced image" width="400"/>
+  <img src="docs/interlaced.png" alt="Interlaced image" width="300"/>
   <span style="font-size: 2em; margin: 0 10px;">+</span>
-  <img src="docs/barrier.png" alt="Scanimation barrier" width="400"/>
+  <img src="docs/barrier.png" alt="Scanimation barrier" width="300"/>
   <span style="font-size: 2em; margin: 0 10px;">=</span>
-  <img src="docs/preview.gif" alt="Animated scanimation" width="400"/>
+  <img src="docs/preview.gif" alt="Animated scanimation" width="300"/>
 </p>
-
-![Scanimation demo of a seal galumphing](docs/preview.gif)
 
 This repository provides Python tools to generate scanimation barriers, interlace images, preview the animation digitally, and design lamp templates that you could use to make a lamp to view your scanimation through.
 
