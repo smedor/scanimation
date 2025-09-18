@@ -4,11 +4,11 @@ Scanimation is an optical illusion technique where multiple images are interlace
 When the barrier is moved across the interlaced image, the slits reveal one frame at a time, creating the illusion of motion.  
 
 <p align="center">
-  <img src="docs/interlaced.png" alt="Interlaced image" width="200"/>
+  <img src="docs/interlaced.png" alt="Interlaced image" width="400"/>
   <span style="font-size: 2em; margin: 0 10px;">+</span>
-  <img src="docs/barrier.png" alt="Scanimation barrier" width="200"/>
+  <img src="docs/barrier.png" alt="Scanimation barrier" width="400"/>
   <span style="font-size: 2em; margin: 0 10px;">=</span>
-  <img src="docs/preview.gif" alt="Animated scanimation" width="200"/>
+  <img src="docs/preview.gif" alt="Animated scanimation" width="400"/>
 </p>
 
 ![Scanimation demo of a seal galumphing](docs/preview.gif)
