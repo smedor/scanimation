@@ -118,6 +118,10 @@ def create_lamp_template(
 
     images_est = max(1, int(round((barrier_width + slit_width) / max(1e-9, slit_width))))
 
+    # Number of periods around the perimeter
+    periods_exact = perimeter_bar / period            # in periods (can be non-integer)
+    periods_str   = f"{periods_exact:.3f}"            # 3 decimals for display
+
     # ---------- Polyline helpers ----------
     def _polyline_length(pts):
         total = 0.0
@@ -296,7 +300,7 @@ def create_lamp_template(
             f"Slit: {slit_width:.3f}{barrier_units}  |  "
             f"Period: {period:.3f}{barrier_units}"
         )
-        line3 = f"Recommended images: {images_est}"
+        line3 = f"N images: {images_est}  |  Periods: {periods_exact:.3f}"
 
         svg_elems.append(
             f'<text x="{cx_canvas:.6f}" y="{cy_canvas - 1.2*text_size:.6f}" '
@@ -361,7 +365,7 @@ def create_lamp_template(
             f"Slit: {slit_width:.3f}{barrier_units}  |  "
             f"Period: {period:.3f}{barrier_units}"
         )
-        line3 = f"Recommended images: {images_est}"
+        line3 = f"N images: {images_est}  |  Periods: {periods_exact:.3f}"
 
     # center (pt)
     center_pt = ((center[0] + margin) * U, (center[1] + margin) * U)

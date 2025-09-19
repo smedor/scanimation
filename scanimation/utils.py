@@ -155,6 +155,71 @@ def sort_key(filename):
 def _fmt(n):
     return f"{n:.4f}".rstrip('0').rstrip('.') if isinstance(n, float) else str(n)
 
+# === Get specified number of images from the provided video ===
+def get_images_from_video(video_path, num_images=6, start_time=None, end_time=None):    
+    # Extract the specified number of images from a video file and save the images to a new folder 
+    
+    import cv2
+    import os
+    import numpy as np
+
+    # File Handling
+    output_path = ''
+    # if video_path is a directory, use the first video file in it.
+    if os.path.isdir(video_path):
+        video_files = [f for f in os.listdir(video_path) if f.endswith(('.mp4', '.avi', '.mov'))]
+        if not video_files:
+            raise ValueError("No video files found in the specified directory.")
+        video_path = os.path.join(video_path, video_files[0])
+        output_path = os.path.join(os.path.dirname(video_path), 'images')
+    # if video_path is a file, use it directly.    
+    elif os.path.isfile(video_path):
+        output_path = os.path.join(os.path.dirname(video_path), 'images')
+    else:
+        raise ValueError("The provided video path is neither a directory nor a valid file.")
+    # Create the output directory if it does not exist
+    if not os.path.exists(output_path):
+        os.makedirs(output_path)
+
+    # Load video
+    cap = cv2.VideoCapture(video_path)
+    if not cap.isOpened():
+        raise ValueError(f"Cannot open video file: {video_path}")
+    
+    # Get video properties
+    fps = cap.get(cv2.CAP_PROP_FPS)
+    total_images = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
+    duration_sec = total_images / fps
+    
+    # Convert start and end times to seconds
+    start_sec = start_time if start_time is not None else 0
+    end_sec = end_time if end_time is not None else duration_sec
+
+    if start_sec < 0 or end_sec > duration_sec or start_sec >= end_sec:
+        raise ValueError("Invalid start_time or end_time")
+    
+    start_frame = int(start_sec * fps)
+    end_frame = int(end_sec * fps)
+
+    # Determine frame indices to extract
+    frame_indices = np.linspace(start_frame, end_frame - 1, num_images, dtype=int)
+    
+    saved_count = 0
+    for i in range(total_images):
+        ret, frame = cap.read()
+        if not ret:
+            break
+        if i in frame_indices:
+            filename = os.path.join(output_path, f"frame_{saved_count:03d}.png")
+            cv2.imwrite(filename, frame)
+            saved_count += 1
+        if saved_count >= num_images:
+            break
+
+    cap.release()
+    print(f"Saved {saved_count} images to '{output_path}'.")
+    return output_path
+
 # === calculate_ideal_fit ===
 def calculate_ideal_fit(
     images_path: str,
